@@ -10,82 +10,68 @@ public class User {
     private Long id;
     @Column(name="username", unique = true)
     private String username;
-    @Column(name="password")
-    private String password;
     @Column(name="email", unique = true)
     private String email;
     @Column(name="first_name")
     private String firstName;
     @Column(name="last_name")
     private String lastName;
-    @Column(name="user_status")
-    private Integer userStatus;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="created_at")
+    private String createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="updated_at")
+    private String updatedAt;
 
     public User() {
     }
 
-    public User(String username, String password, String email, String firstName, String lastName,
-        Integer userStatus) {
+    public User(String username, String email, String firstName, String lastName) {
         this.username = username;
-        this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userStatus = userStatus;
+        this.createdAt = "now";
+        this.updatedAt = "now";
     }
 
+    public Long getId() { return this.id; }
+    public void setId(Long id) { this.id = id; }
     public String getUsername() {
         return this.username;
     }
-
-    public String getPassword() {
-        return this.password;
-    }
-
     public String getEmail() {
         return this.email;
     }
-
     public String getFirstName() {
         return this.firstName;
     }
-
     public String getLastName() {
         return this.lastName;
     }
-
-    public Integer getUserStatus() {
-        return this.userStatus;
-    }
-
+    public String getCreatedAt() { return this.createdAt; }
+    public String getUpdatedAt() { return this.updatedAt; }
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
-    }
-
+    void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
     @Override
     public String toString() {
-        return "{" + " username='" + getUsername() + "'" + ", password='" + getPassword() + "'" + ", email='" + getEmail()
-            + "'" + ", firstName='" + getFirstName() + "'" + ", lastName='" + getLastName() + "'"
-            + "'" + ", userStatus='" + getUserStatus() + "'" + "}";
+        return "{"
+                + " id='" + getId() + "'"
+                + ", username='" + getUsername() + "'"
+                + ", email='" + getEmail() + "'"
+                + ", firstName='" + getFirstName() + "'"
+                + ", lastName='" + getLastName() + "'"
+                + "}";
     }
 }

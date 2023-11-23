@@ -20,17 +20,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(Long id) {
+    public User getUserById(@PathVariable Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @PostMapping
-    public User createUser(User user) {
+    public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(Long id, User user) {
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
         User existingUser = userRepository.findById(id).orElse(null);
         if (existingUser == null) {
             return null;
@@ -41,11 +41,12 @@ public class UserController {
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setUserStatus(user.getUserStatus());
+        existingUser.setCreatedAt(user.getCreatedAt());
         return userRepository.save(existingUser);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(Long id) {
+    public String deleteUser(@PathVariable Long id) {
         try {
             userRepository.deleteById(id);
             return "Deleted user with id: " + id;

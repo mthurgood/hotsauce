@@ -1,6 +1,24 @@
 version: '3.9'
 
 services:
+    java_app:
+        build: .
+        container_name: hotsauce
+        image: mthurgood/hotsauce:1.0.0
+        ports:
+            - 8080:8080
+        depends_on:
+            - java_db
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://java_db:5432/java_db
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=postgres
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+            - SPRING_JPA_SHOW_SQL=true
+            - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+            - SPRING_JPA_PROPERTIES_HIBERNATE_USE_SQL_COMMENTS=true
+            - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+            - SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE=20
     java_db:
         image: postgres:13.3
         container_name: java_db
