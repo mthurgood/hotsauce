@@ -22,6 +22,8 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_at")
     private String updatedAt;
+    @Column(name="status")
+    private String status;
 
     public User() {
     }
@@ -33,6 +35,7 @@ public class User {
         this.lastName = lastName;
         this.createdAt = "now";
         this.updatedAt = "now";
+        this.status = "created";
     }
 
     public Long getId() { return this.id; }
@@ -64,6 +67,10 @@ public class User {
         this.lastName = lastName;
     }
     void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+    void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
+    void setStatus(String status) { this.status = status; }
+    String getStatus() { return this.status; }
+
     @Override
     public String toString() {
         return "{"
@@ -72,6 +79,7 @@ public class User {
                 + ", email='" + getEmail() + "'"
                 + ", firstName='" + getFirstName() + "'"
                 + ", lastName='" + getLastName() + "'"
+                + ", status='" + getStatus() + "'"
                 + "}";
     }
 }

@@ -1,4 +1,9 @@
+com/thugsoft/hotsauce/pepper/Pepper.class
+com/thugsoft/hotsauce/HotsauceApplication.class
+com/thugsoft/hotsauce/barcode/Barcode.class
+com/thugsoft/hotsauce/user/User.class
 com/thugsoft/hotsauce/user/UserRepository.class
 com/thugsoft/hotsauce/user/UserController.class
-com/thugsoft/hotsauce/HotsauceApplication.class
-com/thugsoft/hotsauce/user/User.class
+com/thugsoft/hotsauce/sauce/Sauce.class
+com/thugsoft/hotsauce/company/Company.class
+com/thugsoft/hotsauce/rating/Rating.class

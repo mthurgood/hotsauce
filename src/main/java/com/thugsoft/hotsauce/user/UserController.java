@@ -36,12 +36,12 @@ public class UserController {
             return null;
         }
         existingUser.setUsername(user.getUsername());
-        existingUser.setPassword(user.getPassword());
         existingUser.setEmail(user.getEmail());
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
-        existingUser.setUserStatus(user.getUserStatus());
+        existingUser.setStatus(user.getStatus());
         existingUser.setCreatedAt(user.getCreatedAt());
+        existingUser.setUpdatedAt("now");
         return userRepository.save(existingUser);
     }
 
