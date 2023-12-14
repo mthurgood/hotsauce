@@ -23,7 +23,7 @@ GET localhost:8080/api/users
 		"email": "user1@gmail.com",
 		"firstName": "User",
 		"lastName": "Name",
-		"userStatus": 1
+		"userStatus": "created"
 	}'
 
 ## Update User (PUT)
@@ -35,5 +35,5 @@ GET localhost:8080/api/users
 		"email": "user2@gmail.com",
 		"firstName": "User",
 		"lastName": "Name2",
-		"userStatus": 1
+		"userStatus": "created"
 	}'
