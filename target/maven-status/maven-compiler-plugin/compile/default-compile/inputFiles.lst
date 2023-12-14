@@ -1,9 +1,11 @@
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/user/UserController.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/user/User.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/pepper/Pepper.java
+/Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/company/CompanyRepository.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/HotsauceApplication.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/user/UserRepository.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/barcode/Barcode.java
+/Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/company/CompanyController.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/rating/Rating.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/sauce/Sauce.java
 /Users/markthurgood/IdeaProjects/hotsauce/src/main/java/com/thugsoft/hotsauce/company/Company.java

@@ -7,3 +7,5 @@ com/thugsoft/hotsauce/user/UserController.class
 com/thugsoft/hotsauce/sauce/Sauce.class
 com/thugsoft/hotsauce/company/Company.class
 com/thugsoft/hotsauce/rating/Rating.class
+com/thugsoft/hotsauce/company/CompanyRepository.class
+com/thugsoft/hotsauce/company/CompanyController.class

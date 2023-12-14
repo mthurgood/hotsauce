@@ -37,3 +37,34 @@ GET localhost:8080/api/users
 		"lastName": "Name2",
 		"userStatus": "created"
 	}'
+# Companies
+## Get List of Companies (GET)
+GET localhost:8080/api/companies
+
+    curl --location 'localhost:8080/api/companies'
+
+## Create Company (POST)
+    curl --location --request POST 'localhost:8080/api/companies' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "Company 1",
+        "description": "A Description",
+        "location": "New York",
+        "website": "www.company1.com",
+        "image": ""
+    }'
+
+## Update Company (PUT)
+    curl --location --request PUT 'localhost:8080/api/companies/2' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "name": "Company 1",
+        "description": "A Description",
+        "location": "New York",
+        "website": "www.company1.com",
+        "image": ""
+    }'
+
+## Delete Company (DELETE)
+    curl --location --request DELETE 'localhost:8080/api/companies/2'
+

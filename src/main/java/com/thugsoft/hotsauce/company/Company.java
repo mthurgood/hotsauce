@@ -20,25 +20,25 @@ public class Company {
     @Column(name = "website")
     private String website;
 
-    @Column(name = "image", length = 100000, columnDefinition = "LONGBLOB")
-    private String image;
+    @Column(name = "image", length = 100000, columnDefinition = "BYTEA")
+    private byte[] image;
 
     @Column(name = "user_id")
     private Long userId;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "created_at")
     private String createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "updated_at")
     private String updatedAt;
 
     public Company() {
     }
 
     public Company(String name, String description, String location,
-                   String website, String image, Long userId) {
+                   String website, byte[] image, Long userId) {
 
         this.name = name;
         this.description = description;
@@ -56,7 +56,7 @@ public class Company {
     public String getDescription() { return this.description; }
     public String getLocation() { return this.location; }
     public String getWebsite() { return this.website; }
-    public String getImage() { return this.image; }
+    public byte[] getImage() { return this.image; }
     public Long getUserId() { return this.userId; }
     public String getCreatedAt() { return this.createdAt; }
     public String getUpdatedAt() { return this.updatedAt; }
@@ -64,7 +64,7 @@ public class Company {
     public void setDescription(String description) { this.description = description; }
     public void setLocation(String location) { this.location = location; }
     public void setWebsite(String website) { this.website = website; }
-    public void setImage(String image) { this.image = image; }
+    public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
 
     void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }

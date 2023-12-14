@@ -26,8 +26,8 @@ public class Sauce {
     private Long pepperId;
     @Column(name = "ingredients")
     private String ingredients;
-    @Column(name = "image", length = 100000, columnDefinition = "LONGBLOB")
-    private String image;
+    @Column(name = "image", length = 100000, columnDefinition = "BYTEA")
+    private byte[] image;
     @Column(name = "user_id")
     private Long userId;
     @Column(name = "company_id")
@@ -41,7 +41,7 @@ public class Sauce {
     }
 
     public Sauce(String name, long scoville, String description, Long pepperId,
-                 String ingredients, String image, Long userId, Long companyId) {
+                 String ingredients, byte[] image, Long userId, Long companyId) {
         this.name = name;
         this.scoville = scoville;
         this.description = description;
@@ -61,7 +61,7 @@ public class Sauce {
     public String getDescription() { return this.description; }
     public Long getPepperId() { return this.pepperId; }
     public String getIngredients() { return this.ingredients; }
-    public String getImage() { return this.image; }
+    public byte[] getImage() { return this.image; }
     public Long getUserId() { return this.userId; }
     public Long getCompanyId() { return this.companyId; }
     public String getCreatedAt() { return this.createdAt; }
@@ -71,6 +71,6 @@ public class Sauce {
     public void setDescription(String description) { this.description = description; }
     public void setPepperId(Long pepperId) { this.pepperId = pepperId; }
     public void setIngredients(String ingredients) { this.ingredients = ingredients; }
-    public void setImage(String image) { this.image = image; }
+    public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
 }

@@ -12,8 +12,8 @@ public class Pepper {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "image", length = 100000, columnDefinition = "LONGBLOB")
-    private String image;
+    @Column(name = "image", length = 100000, columnDefinition = "BYTEA")
+    private byte[] image;
 @Column(name = "user_id")
     private Long userId;
     @Temporal(TemporalType.TIMESTAMP)
@@ -26,7 +26,7 @@ public class Pepper {
     public Pepper() {
     }
 
-    public Pepper(String name, String description, String image, Long userId) {
+    public Pepper(String name, String description, byte[] image, Long userId) {
         this.name = name;
         this.description = description;
         this.image = image;
@@ -39,12 +39,12 @@ public class Pepper {
     public void setId(Long id) { this.id = id; }
     public String getName() { return this.name; }
     public String getDescription() { return this.description; }
-    public String getImage() { return this.image; }
+    public byte[] getImage() { return this.image; }
     public Long getUserId() { return this.userId; }
     public String getCreatedAt() { return this.createdAt; }
     public String getUpdatedAt() { return this.updatedAt; }
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
-    public void setImage(String image) { this.image = image; }
+    public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
 }
