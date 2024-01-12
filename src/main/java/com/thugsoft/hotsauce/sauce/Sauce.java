@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "sauces")
@@ -32,16 +34,22 @@ public class Sauce {
     private Long userId;
     @Column(name = "company_id")
     private Long companyId;
-    @Column(name = "created_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "rating_id")
+    private Long ratingId;
+    @CreationTimestamp
+    @Column(name="created_at")
     private String createdAt;
-    @Column(name = "updated_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @UpdateTimestamp
+    @Column(name="updated_at")
     private String updatedAt;
+
+
 
     public Sauce() {
     }
 
     public Sauce(String name, long scoville, String description, Long pepperId,
-                 String ingredients, byte[] image, Long userId, Long companyId) {
+                 String ingredients, byte[] image, Long userId, Long ratingId, Long companyId) {
         this.name = name;
         this.scoville = scoville;
         this.description = description;
@@ -49,6 +57,7 @@ public class Sauce {
         this.ingredients = ingredients;
         this.image = image;
         this.userId = userId;
+        this.ratingId = ratingId;
         this.companyId = companyId;
         this.createdAt = "now";
         this.updatedAt = "now";
@@ -73,4 +82,27 @@ public class Sauce {
     public void setIngredients(String ingredients) { this.ingredients = ingredients; }
     public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
+    public void setCompanyId(Long companyId) { this.companyId = companyId; }
+    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+    public void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
+
+    public void setRatingId(Long ratingId) { this.ratingId = ratingId; }
+    public Long getRatingId() { return this.ratingId; }
+
+    @Override
+    public String toString() {
+        return "{"
+                + " id='" + getId() + "'"
+                + ", name='" + getName() + "'"
+                + ", scoville='" + getScoville() + "'"
+                + ", description='" + getDescription() + "'"
+                + ", pepperId='" + getPepperId() + "'"
+                + ", ingredients='" + getIngredients() + "'"
+                + ", image='" + getImage() + "'"
+                + ", userId='" + getUserId() + "'"
+                + ", companyId='" + getCompanyId() + "'"
+                + ", createdAt='" + getCreatedAt() + "'"
+                + ", updatedAt='" + getUpdatedAt() + "'"
+                + "}";
+    }
 }

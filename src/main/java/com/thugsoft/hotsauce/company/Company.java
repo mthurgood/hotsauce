@@ -1,5 +1,10 @@
 package com.thugsoft.hotsauce.company;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
+
 @Entity
 @Table(name = "companies")
 public class Company {
@@ -16,7 +21,6 @@ public class Company {
     @Column(name = "location")
     private String location;
 
-    // website
     @Column(name = "website")
     private String website;
 
@@ -26,13 +30,13 @@ public class Company {
     @Column(name = "user_id")
     private Long userId;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     @Column(name = "created_at")
-    private String createdAt;
+    private Instant createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     @Column(name = "updated_at")
-    private String updatedAt;
+    private Instant updatedAt;
 
     public Company() {
     }
@@ -46,20 +50,17 @@ public class Company {
         this.website = website;
         this.image = image;
         this.userId = userId;
-        this.createdAt = "now";
-        this.updatedAt = "now";
     }
 
     public Long getId() { return this.id; }
-    public void setId(Long id) { this.id = id; }
     public String getName() { return this.name; }
     public String getDescription() { return this.description; }
     public String getLocation() { return this.location; }
     public String getWebsite() { return this.website; }
     public byte[] getImage() { return this.image; }
     public Long getUserId() { return this.userId; }
-    public String getCreatedAt() { return this.createdAt; }
-    public String getUpdatedAt() { return this.updatedAt; }
+    public String getCreatedAt() { return this.createdAt.toString(); }
+    public String getUpdatedAt() { return this.updatedAt.toString(); }
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
     public void setLocation(String location) { this.location = location; }
@@ -67,7 +68,6 @@ public class Company {
     public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
 
-    void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
     @Override
     public String toString() {
         return "{"

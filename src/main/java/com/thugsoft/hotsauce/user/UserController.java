@@ -40,8 +40,6 @@ public class UserController {
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setStatus(user.getStatus());
-        existingUser.setCreatedAt(user.getCreatedAt());
-        existingUser.setUpdatedAt("now");
         return userRepository.save(existingUser);
     }
 

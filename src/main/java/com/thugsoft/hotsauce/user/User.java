@@ -1,6 +1,10 @@
 package com.thugsoft.hotsauce.user;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "users")
@@ -16,12 +20,14 @@ public class User {
     private String firstName;
     @Column(name="last_name")
     private String lastName;
-    @Temporal(TemporalType.TIMESTAMP)
+
+    @CreationTimestamp
     @Column(name="created_at")
-    private String createdAt;
-    @Temporal(TemporalType.TIMESTAMP)
+    private Instant createdAt;
+
+    @UpdateTimestamp
     @Column(name="updated_at")
-    private String updatedAt;
+    private Instant updatedAt;
     @Column(name="status")
     private String status;
 
@@ -33,13 +39,10 @@ public class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.createdAt = "now";
-        this.updatedAt = "now";
         this.status = "created";
     }
 
     public Long getId() { return this.id; }
-    public void setId(Long id) { this.id = id; }
     public String getUsername() {
         return this.username;
     }
@@ -52,8 +55,8 @@ public class User {
     public String getLastName() {
         return this.lastName;
     }
-    public String getCreatedAt() { return this.createdAt; }
-    public String getUpdatedAt() { return this.updatedAt; }
+    public String getCreatedAt() { return this.createdAt.toString(); }
+    public String getUpdatedAt() { return this.updatedAt.toString(); }
     public void setUsername(String username) {
         this.username = username;
     }
@@ -66,8 +69,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
-    void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
     void setStatus(String status) { this.status = status; }
     String getStatus() { return this.status; }
 
@@ -80,6 +81,8 @@ public class User {
                 + ", firstName='" + getFirstName() + "'"
                 + ", lastName='" + getLastName() + "'"
                 + ", status='" + getStatus() + "'"
+                + ", createdAt='" + getCreatedAt() + "'"
+                + ", updatedAt='" + getUpdatedAt() + "'"
                 + "}";
     }
 }

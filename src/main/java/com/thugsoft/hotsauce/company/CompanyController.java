@@ -38,7 +38,6 @@ public class CompanyController {
         existingCompany.setLocation(company.getLocation());
         existingCompany.setWebsite(company.getWebsite());
         existingCompany.setImage(company.getImage());
-        existingCompany.setUpdatedAt("now");
         return companyRepository.save(existingCompany);
     }
 
