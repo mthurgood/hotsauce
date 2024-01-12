@@ -3,7 +3,7 @@ package com.thugsoft.hotsauce.pepper;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "peppers")
+@Table(name = "Pepper")
 public class Pepper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,7 @@ public class Pepper {
     private String description;
     @Column(name = "image", length = 100000, columnDefinition = "BYTEA")
     private byte[] image;
-@Column(name = "user_id")
+    @Column(name = "user_id")
     private Long userId;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

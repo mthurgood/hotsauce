@@ -10,7 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "sauces")
+@Table(name = "Sauce")
 public class Sauce {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,10 @@ public class Sauce {
     @Column(name = "description")
     private String description;
 
-    // this should be a foreign key to the peppers table
-    // this should be a one-to-many relationship
-    @Column(name = "pepper_id")
-    private Long pepperId;
+    // TODO: this should be a foreign key to the peppers table
+    // TODO: this should be a one-to-many relationship
+    // @Column(name = "pepper_id")
+    // private Long pepperId;
     @Column(name = "ingredients")
     private String ingredients;
     @Column(name = "image", length = 100000, columnDefinition = "BYTEA")
@@ -43,17 +43,14 @@ public class Sauce {
     @Column(name="updated_at")
     private String updatedAt;
 
-
-
     public Sauce() {
     }
 
-    public Sauce(String name, long scoville, String description, Long pepperId,
+    public Sauce(String name, long scoville, String description,
                  String ingredients, byte[] image, Long userId, Long ratingId, Long companyId) {
         this.name = name;
         this.scoville = scoville;
         this.description = description;
-        this.pepperId = pepperId;
         this.ingredients = ingredients;
         this.image = image;
         this.userId = userId;
@@ -68,7 +65,7 @@ public class Sauce {
     public String getName() { return this.name; }
     public long getScoville() { return this.scoville; }
     public String getDescription() { return this.description; }
-    public Long getPepperId() { return this.pepperId; }
+    // public Long getPepperId() { return this.pepperId; }
     public String getIngredients() { return this.ingredients; }
     public byte[] getImage() { return this.image; }
     public Long getUserId() { return this.userId; }
@@ -78,14 +75,11 @@ public class Sauce {
     public void setName(String name) { this.name = name; }
     public void setScoville(long scoville) { this.scoville = scoville; }
     public void setDescription(String description) { this.description = description; }
-    public void setPepperId(Long pepperId) { this.pepperId = pepperId; }
+    // public void setPepperId(Long pepperId) { this.pepperId = pepperId; }
     public void setIngredients(String ingredients) { this.ingredients = ingredients; }
     public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
     public void setCompanyId(Long companyId) { this.companyId = companyId; }
-    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
-    public void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
-
     public void setRatingId(Long ratingId) { this.ratingId = ratingId; }
     public Long getRatingId() { return this.ratingId; }
 
@@ -96,7 +90,6 @@ public class Sauce {
                 + ", name='" + getName() + "'"
                 + ", scoville='" + getScoville() + "'"
                 + ", description='" + getDescription() + "'"
-                + ", pepperId='" + getPepperId() + "'"
                 + ", ingredients='" + getIngredients() + "'"
                 + ", image='" + getImage() + "'"
                 + ", userId='" + getUserId() + "'"

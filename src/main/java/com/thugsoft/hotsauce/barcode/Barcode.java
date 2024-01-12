@@ -1,9 +1,13 @@
 package com.thugsoft.hotsauce.barcode;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Entity
-@Table(name = "barcodes")
+@Table(name = "Barcode")
 public class Barcode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +26,50 @@ public class Barcode {
     @Column(name = "user_id")
     private Long userId;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private String createdAt;
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private Instant createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private String updatedAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    public Barcode() {
+    }
+
+    public Barcode(String barcode, Long sauceId, Long userId) {
+        this.barcode = barcode;
+        this.sauceId = sauceId;
+        this.userId = userId;
+    }
+
+    public Long getId() { return this.id; }
+
+    public String getBarcode() { return this.barcode; }
+
+    public Long getSauceId() { return this.sauceId; }
+
+    public Long getUserId() { return this.userId; }
+
+    public String getCreatedAt() { return this.createdAt.toString(); }
+
+    public String getUpdatedAt() { return this.updatedAt.toString(); }
+
+    public void setBarcode(String barcode) { this.barcode = barcode; }
+
+    public void setSauceId(Long sauceId) { this.sauceId = sauceId; }
+
+    public void setUserId(Long userId) { this.userId = userId; }
+
+    @Override
+    public String toString() {
+        return "Barcode{" +
+                "id=" + id +
+                ", barcode='" + barcode + '\'' +
+                ", sauceId=" + sauceId +
+                ", userId=" + userId +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
 }

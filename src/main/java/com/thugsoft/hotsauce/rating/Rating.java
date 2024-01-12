@@ -5,7 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "ratings")
+@Table(name = "Rating")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +38,6 @@ public class Rating {
         this.userId = userId;
         this.rating = rating;
         this.notes = notes;
-        this.createdAt = "now";
-        this.updatedAt = "now";
     }
 
     public Long getId() { return this.id; }
@@ -55,4 +53,16 @@ public class Rating {
     public void setNotes(String notes) { this.notes = notes; }
     public String getNotes() { return this.notes; }
 
+    @Override
+    public String toString() {
+        return "Rating{" +
+                "id=" + id +
+                ", sauceId=" + sauceId +
+                ", userId=" + userId +
+                ", rating=" + rating +
+                ", notes='" + notes + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
 }
