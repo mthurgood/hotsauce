@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
+
 @Entity
-@Table(name = "Rating")
+@Table(name = "rating")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +27,11 @@ public class Rating {
 
     @CreationTimestamp
     @Column(name="created_at")
-    private String createdAt;
+    private Instant createdAt;
+
     @UpdateTimestamp
     @Column(name="updated_at")
-    private String updatedAt;
+    private Instant updatedAt;
 
     public Rating() {
     }
@@ -45,8 +48,8 @@ public class Rating {
     public Long getSauceId() { return this.sauceId; }
     public Long getUserId() { return this.userId; }
     public int getRating() { return this.rating; }
-    public String getCreatedAt() { return this.createdAt; }
-    public String getUpdatedAt() { return this.updatedAt; }
+    public Instant getCreatedAt() { return this.createdAt; }
+    public Instant getUpdatedAt() { return this.updatedAt; }
     public void setSauceId(Long sauceId) { this.sauceId = sauceId; }
     public void setUserId(Long userId) { this.userId = userId; }
     public void setRating(int rating) { this.rating = rating; }

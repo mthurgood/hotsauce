@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.sql.Date;
 import java.time.Instant;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,7 @@ public class User {
     @UpdateTimestamp
     @Column(name="updated_at")
     private Instant updatedAt;
+
     @Column(name="status")
     private String status;
 
@@ -40,6 +42,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.status = "created";
+        System.out.println("User created: " + this.toString());
     }
 
     public Long getId() { return this.id; }

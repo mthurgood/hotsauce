@@ -38,8 +38,8 @@ public class SauceController {
         existingSauce.setName(sauce.getName());
         existingSauce.setScoville(sauce.getScoville());
         existingSauce.setIngredients(sauce.getIngredients());
+        existingSauce.setAllergens(sauce.getAllergens());
         existingSauce.setCompanyId(sauce.getCompanyId());
-        existingSauce.setRatingId(sauce.getRatingId());
         return sauceRepository.save(existingSauce);
     }
 
@@ -52,5 +52,4 @@ public class SauceController {
             return "Sauce not found.";
         }
     }
-
 }

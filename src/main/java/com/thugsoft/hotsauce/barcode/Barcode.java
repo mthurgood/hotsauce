@@ -7,7 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Barcode")
+@Table(name = "barcode")
 public class Barcode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,7 @@ public class Barcode {
     // EAN-8: 8 digits (shortened version of EAN-13
     // EAN-13: 13 digits (3-country code, 9-digit manufacturer/product, 1 check digit)
     // all of these only use the digits 0-9
+    @Column(name="barcode", unique = true)
     private String barcode;
     @Column(name = "sauce_id")
     private Long sauceId;

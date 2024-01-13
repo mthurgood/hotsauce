@@ -46,4 +46,13 @@ public class RatingController {
         existingRating.setNotes(rating.getNotes());
         return ratingRepository.save(existingRating);
     }
+    @DeleteMapping("/{id}")
+    public String deleteRating(@PathVariable Long id) {
+        try {
+            ratingRepository.deleteById(id);
+            return "Deleted rating with id: " + id;
+        } catch (Exception e) {
+            return "Rating not found.";
+        }
+    }
 }

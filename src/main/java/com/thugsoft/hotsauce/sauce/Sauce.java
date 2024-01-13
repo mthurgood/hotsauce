@@ -9,8 +9,10 @@ import jakarta.persistence.GenerationType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
+
 @Entity
-@Table(name = "Sauce")
+@Table(name = "sauce")
 public class Sauce {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,42 +24,41 @@ public class Sauce {
     @Column(name = "description")
     private String description;
 
-    // TODO: this should be a foreign key to the peppers table
-    // TODO: this should be a one-to-many relationship
-    // @Column(name = "pepper_id")
-    // private Long pepperId;
     @Column(name = "ingredients")
     private String ingredients;
+
+    // TODO: add allergens
+    @Column(name = "allergens")
+    private String allergens;
+
     @Column(name = "image", length = 100000, columnDefinition = "BYTEA")
     private byte[] image;
     @Column(name = "user_id")
     private Long userId;
     @Column(name = "company_id")
     private Long companyId;
-    @Column(name = "rating_id")
-    private Long ratingId;
+
     @CreationTimestamp
     @Column(name="created_at")
-    private String createdAt;
+    private Instant createdAt;
+
     @UpdateTimestamp
     @Column(name="updated_at")
-    private String updatedAt;
+    private Instant updatedAt;
 
     public Sauce() {
     }
 
-    public Sauce(String name, long scoville, String description,
-                 String ingredients, byte[] image, Long userId, Long ratingId, Long companyId) {
+    public Sauce(String name, long scoville, String description, String allergens,
+                 String ingredients, byte[] image, Long userId, Long companyId) {
         this.name = name;
         this.scoville = scoville;
         this.description = description;
         this.ingredients = ingredients;
+        this.allergens = allergens;
         this.image = image;
         this.userId = userId;
-        this.ratingId = ratingId;
         this.companyId = companyId;
-        this.createdAt = "now";
-        this.updatedAt = "now";
     }
 
     public Long getId() { return this.id; }
@@ -65,23 +66,21 @@ public class Sauce {
     public String getName() { return this.name; }
     public long getScoville() { return this.scoville; }
     public String getDescription() { return this.description; }
-    // public Long getPepperId() { return this.pepperId; }
     public String getIngredients() { return this.ingredients; }
     public byte[] getImage() { return this.image; }
     public Long getUserId() { return this.userId; }
     public Long getCompanyId() { return this.companyId; }
-    public String getCreatedAt() { return this.createdAt; }
-    public String getUpdatedAt() { return this.updatedAt; }
+    public Instant getCreatedAt() { return this.createdAt; }
+    public Instant getUpdatedAt() { return this.updatedAt; }
     public void setName(String name) { this.name = name; }
     public void setScoville(long scoville) { this.scoville = scoville; }
     public void setDescription(String description) { this.description = description; }
-    // public void setPepperId(Long pepperId) { this.pepperId = pepperId; }
     public void setIngredients(String ingredients) { this.ingredients = ingredients; }
     public void setImage(byte[] image) { this.image = image; }
     public void setUserId(Long userId) { this.userId = userId; }
     public void setCompanyId(Long companyId) { this.companyId = companyId; }
-    public void setRatingId(Long ratingId) { this.ratingId = ratingId; }
-    public Long getRatingId() { return this.ratingId; }
+    public void setAllergens(String allergens) { this.allergens = allergens; }
+    public String getAllergens() { return this.allergens; }
 
     @Override
     public String toString() {
@@ -91,6 +90,7 @@ public class Sauce {
                 + ", scoville='" + getScoville() + "'"
                 + ", description='" + getDescription() + "'"
                 + ", ingredients='" + getIngredients() + "'"
+                + ", allergens='" + getAllergens() + "'"
                 + ", image='" + getImage() + "'"
                 + ", userId='" + getUserId() + "'"
                 + ", companyId='" + getCompanyId() + "'"
